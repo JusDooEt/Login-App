@@ -1,6 +1,6 @@
 # Login Form Template
 ## About
-This program is meant to be a template for a login page to use for other applications that require this level of security before a user can access the full application. This program was also used to practice using a database in order to store data like usernames, emails and passwords. The window will use this database in order to verify a user's login credentials. There is also an option to register a new user that will insert the new user's data into the database.
+This program is meant to be a template for a login page to use for other applications that require this level of security before a user can access the full application. This program was also used to practice using a database in order to store data like usernames, emails and passwords. The window will use this database in order to verify a user's login credentials. There is also an option to register a new user that will insert the new user's data into the database and allow them to login after a successful registration.
 
 
 ## Build Image
