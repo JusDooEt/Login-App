@@ -14,13 +14,13 @@ class ItemList : public QWidget
     Q_OBJECT
 
 public:
-    explicit ItemList(QWidget *parent, const QSqlDatabase& DBConnection, int userID);
+    explicit ItemList(QWidget *parent, const QSqlDatabase& DBConnection, QString username);
     ~ItemList();
 
 private:
     Ui::ItemList *ui;
     QSqlDatabase DBConnection;
-    int userID;
+    QString username;
 
 signals:
 
