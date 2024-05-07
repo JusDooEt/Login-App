@@ -71,3 +71,55 @@ void LoginWidget::on_register_pushButton_clicked()
     });
 }
 
+
+void LoginWidget::on_login_pushButton_clicked()
+{
+    if(ui->password_lineEdit->text().length() == 0 || ui->username_lineEdit->text().length() == 0)
+        return;
+
+    QSqlQuery queryFindUser(DBConnection);
+    QString   queryStr;
+    QString   username = ui->username_lineEdit->text();
+    QString   password = ui->password_lineEdit->text();
+
+    queryStr = "SELECT * FROM users WHERE username='" + username;
+    queryStr += "' AND password='" + password + "';";
+    if(queryFindUser.prepare(queryStr))
+    {
+        if (queryFindUser.exec())
+        {
+            unsigned int userFoundCount = 0;
+            while (queryFindUser.next())
+            {
+                userFoundCount++;
+            }
+
+            if (userFoundCount == 1)    // Username and password match
+            {
+                QMessageBox::information(this, "Login", "Login Successful.");
+                this->hide();
+                itemListDialog = new ItemList(nullptr, DBConnection, username);
+                itemListDialog->show();
+            }
+            else if (userFoundCount == 0)   // Matching username and password were not found
+            {
+                QMessageBox::information(this, "Login", "Failed to login.\nCheck your username and password.");
+
+            }
+            else                            // ERROR
+            {
+                QMessageBox::information(this, "Login", "Failed to login.\nCheck your username and password.");
+                qDebug() << "<ERROR> - Potential Duplicates in Database";
+            }
+        }
+        else
+        {
+            qDebug() << "<ERROR> - " << QSqlError().text();
+        }
+    }
+    else
+    {
+        qDebug() << "<ERROR> - " << QSqlError().text();
+    }
+}
+

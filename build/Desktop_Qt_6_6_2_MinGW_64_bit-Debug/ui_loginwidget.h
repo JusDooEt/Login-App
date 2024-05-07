@@ -203,6 +203,7 @@ public:
 
         password_lineEdit = new QLineEdit(LoginWidget);
         password_lineEdit->setObjectName("password_lineEdit");
+        password_lineEdit->setEchoMode(QLineEdit::Password);
 
         verticalLayout->addWidget(password_lineEdit);
 

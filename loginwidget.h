@@ -23,6 +23,8 @@ public:
 private slots:
     void on_register_pushButton_clicked();
 
+    void on_login_pushButton_clicked();
+
 private:
     Ui::LoginWidget *ui;
     ItemList* itemListDialog;

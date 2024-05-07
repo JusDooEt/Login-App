@@ -206,7 +206,11 @@ QListWidget::item
           <widget class="QLineEdit" name="username_lineEdit"/>
          </item>
          <item>
-          <widget class="QLineEdit" name="password_lineEdit"/>
+          <widget class="QLineEdit" name="password_lineEdit">
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
