@@ -62,6 +62,7 @@ Register Dialog closed
 - [x] Add a window to execute after a successful login.
   - [x] Add functionality to this window to practice linking tables in the SQL database.
   - [x] Link the user table to an item table and allow users to add items to their "cart".
+- [ ] Add functions to verify input values.
 
 
 
