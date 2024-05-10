@@ -60,8 +60,8 @@ Register Dialog closed
   - [x] If the username or password cannot be found in the database access will be denied and a message box should popup indicating the user login has failed.
   - [ ] This function can be more specific when alerting the user of a login failure by stating whether the username or password was not found.
 - [x] Add a window to execute after a successful login.
-  - [ ] Add functionality to this window to practice linking tables in the SQL database.
-  - [ ] Link the user table to an item table and allow users to add items to their "cart".
+  - [x] Add functionality to this window to practice linking tables in the SQL database.
+  - [x] Link the user table to an item table and allow users to add items to their "cart".
 
 
 
