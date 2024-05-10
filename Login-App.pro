@@ -10,17 +10,20 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    additemdialog.cpp \
     itemlist.cpp \
     main.cpp \
     loginwidget.cpp \
     registerdialog.cpp
 
 HEADERS += \
+    additemdialog.h \
     itemlist.h \
     loginwidget.h \
     registerdialog.h
 
 FORMS += \
+    additemdialog.ui \
     itemlist.ui \
     loginwidget.ui \
     registerdialog.ui

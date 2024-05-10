@@ -25,6 +25,8 @@ private slots:
 
     void on_login_pushButton_clicked();
 
+    void on_password_lineEdit_returnPressed();
+
 private:
     Ui::LoginWidget *ui;
     ItemList* itemListDialog;

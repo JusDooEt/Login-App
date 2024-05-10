@@ -33,6 +33,7 @@ LoginWidget::LoginWidget(QWidget *parent)
 
 LoginWidget::~LoginWidget()
 {
+    DBConnection.close();
     delete ui;
 }
 
@@ -121,5 +122,11 @@ void LoginWidget::on_login_pushButton_clicked()
     {
         qDebug() << "<ERROR> - " << QSqlError().text();
     }
+}
+
+
+void LoginWidget::on_password_lineEdit_returnPressed()
+{
+    on_login_pushButton_clicked();
 }
 

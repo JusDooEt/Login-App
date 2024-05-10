@@ -11,12 +11,12 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QTableView>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,15 +24,15 @@ QT_BEGIN_NAMESPACE
 class Ui_ItemList
 {
 public:
-    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout;
+    QListWidget *itemView;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton;
+    QLabel *label;
     QSpacerItem *horizontalSpacer_2;
-    QPushButton *pushButton_2;
-    QTableView *tableView;
-    QHBoxLayout *horizontalLayout_2;
+    QPushButton *addButton;
+    QPushButton *deleteButton;
+    QPushButton *clearButton;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton_3;
 
     void setupUi(QWidget *ItemList)
     {
@@ -137,46 +137,69 @@ public:
 "{\n"
 "	color: rgb(85, 255, 255);\n"
 "}"));
-        verticalLayout = new QVBoxLayout(ItemList);
-        verticalLayout->setObjectName("verticalLayout");
+        gridLayout = new QGridLayout(ItemList);
+        gridLayout->setObjectName("gridLayout");
+        itemView = new QListWidget(ItemList);
+        itemView->setObjectName("itemView");
+
+        gridLayout->addWidget(itemView, 1, 0, 1, 4);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        pushButton = new QPushButton(ItemList);
-        pushButton->setObjectName("pushButton");
+        label = new QLabel(ItemList);
+        label->setObjectName("label");
+        QFont font;
+        font.setPointSize(12);
+        font.setBold(false);
+        font.setItalic(false);
+        font.setUnderline(false);
+        label->setFont(font);
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(label);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
-        pushButton_2 = new QPushButton(ItemList);
-        pushButton_2->setObjectName("pushButton_2");
+        addButton = new QPushButton(ItemList);
+        addButton->setObjectName("addButton");
+        addButton->setMinimumSize(QSize(25, 25));
+        addButton->setMaximumSize(QSize(25, 20));
+        QFont font1;
+        font1.setPointSize(16);
+        font1.setBold(false);
+        font1.setItalic(false);
+        addButton->setFont(font1);
+        addButton->setLayoutDirection(Qt::LeftToRight);
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(addButton);
+
+        deleteButton = new QPushButton(ItemList);
+        deleteButton->setObjectName("deleteButton");
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(deleteButton->sizePolicy().hasHeightForWidth());
+        deleteButton->setSizePolicy(sizePolicy);
+        deleteButton->setMinimumSize(QSize(25, 25));
+        deleteButton->setMaximumSize(QSize(25, 25));
+        deleteButton->setFont(font1);
+
+        horizontalLayout->addWidget(deleteButton);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 4);
 
-        tableView = new QTableView(ItemList);
-        tableView->setObjectName("tableView");
-        tableView->setShowGrid(true);
+        clearButton = new QPushButton(ItemList);
+        clearButton->setObjectName("clearButton");
+        clearButton->setMinimumSize(QSize(20, 0));
+        clearButton->setMaximumSize(QSize(50, 16777215));
 
-        verticalLayout->addWidget(tableView);
+        gridLayout->addWidget(clearButton, 2, 3, 1, 1);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_2->addItem(horizontalSpacer);
-
-        pushButton_3 = new QPushButton(ItemList);
-        pushButton_3->setObjectName("pushButton_3");
-
-        horizontalLayout_2->addWidget(pushButton_3);
-
-
-        verticalLayout->addLayout(horizontalLayout_2);
+        gridLayout->addItem(horizontalSpacer, 2, 0, 1, 3);
 
 
         retranslateUi(ItemList);
@@ -186,10 +209,11 @@ public:
 
     void retranslateUi(QWidget *ItemList)
     {
-        ItemList->setWindowTitle(QCoreApplication::translate("ItemList", "Form", nullptr));
-        pushButton->setText(QCoreApplication::translate("ItemList", "PushButton", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("ItemList", "PushButton", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("ItemList", "PushButton", nullptr));
+        ItemList->setWindowTitle(QCoreApplication::translate("ItemList", "Cart", nullptr));
+        label->setText(QCoreApplication::translate("ItemList", "Items", nullptr));
+        addButton->setText(QCoreApplication::translate("ItemList", "+", nullptr));
+        deleteButton->setText(QCoreApplication::translate("ItemList", "-", nullptr));
+        clearButton->setText(QCoreApplication::translate("ItemList", "Clear", nullptr));
     } // retranslateUi
 
 };

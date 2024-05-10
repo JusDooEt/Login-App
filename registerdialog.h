@@ -30,7 +30,7 @@ private slots:
 
 private:
     Ui::RegisterDialog *ui;
-    QSqlDatabase DBConnection;
+    const QSqlDatabase DBConnection;
     bool validEmail;
     bool validUser;
     bool validPassword;
