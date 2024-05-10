@@ -57,6 +57,7 @@ public:
         registerLabel = new QLabel(RegisterDialog);
         registerLabel->setObjectName("registerLabel");
         QFont font;
+        font.setFamilies({QString::fromUtf8("Microsoft Uighur")});
         font.setPointSize(24);
         font.setBold(true);
         registerLabel->setFont(font);
